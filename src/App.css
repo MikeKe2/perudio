@@ -1,0 +1,193 @@
+.app-container {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  border: 10px solid #000000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Header bar styling */
+.header-bar {
+  height: 48px;
+  background: linear-gradient(to bottom, #979797 0%, #818181 100%);
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border-bottom: 10px solid #000000;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.screen-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  min-height: 0; /* allows flex children to shrink */
+}
+
+/* Standard button styling */
+.btn-gradient {
+  background: linear-gradient(to bottom, #dcdcdc 0%, #c0c0c0 100%);
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  text-align: center;
+  transition: opacity 0.1s ease;
+}
+
+.btn-gradient:active {
+  opacity: 0.8;
+}
+
+/* Start screen specific */
+.start-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-start {
+  flex: 1;
+  font-size: clamp(28px, 6vh, 48px);
+  border-bottom: 10px solid #000000;
+}
+
+.btn-quit {
+  flex: 1;
+  font-size: clamp(28px, 6vh, 48px);
+}
+
+/* Game board screen */
+.game-board-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.dice-grid {
+  flex: 13;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  padding: 5px;
+  background-color: #000000;
+  min-height: 0;
+}
+
+.grid-cell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  position: relative;
+}
+
+/* White dice cards */
+.dice-card {
+  width: 90%;
+  height: 92%;
+  background: linear-gradient(135deg, #ffffff 0%, #fcfcfc 35%, #e2e2e2 75%, #d5d5d5 100%);
+  border-radius: 20px;
+  box-shadow: 
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9), 
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15), 
+    0px 5px 8px rgba(0, 0, 0, 0.6);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Blacked out (inactive) dice cards */
+.dice-card-inactive {
+  width: 90%;
+  height: 92%;
+  background-color: #080808;
+  border-radius: 20px;
+  border: 1px solid #141414;
+  box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.95);
+  position: relative;
+}
+
+/* LOSE A DIE button in the grid */
+.btn-lose-die {
+  width: 100%;
+  height: 100%;
+  font-size: clamp(16px, 3vh, 26px);
+  padding: 8px;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* Game bottom controls */
+.btn-roll {
+  flex: 7;
+  font-size: clamp(24px, 5vh, 42px);
+  border-bottom: 10px solid #000000;
+}
+
+.btn-hide {
+  flex: 7;
+  font-size: clamp(24px, 5vh, 42px);
+}
+
+/* Hidden dice screen */
+.hidden-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-show {
+  flex: 1;
+  font-size: clamp(28px, 6vh, 48px);
+}
+
+/* Red dots on dice */
+.dot {
+  position: absolute;
+  width: 16%;
+  height: 16%;
+  background-color: #f8292f;
+  border-radius: 50%;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Absolute positions of dots on standard 3x3 grid inside the card */
+.dot-tl { top: 18%; left: 18%; }
+.dot-tr { top: 18%; right: 18%; }
+.dot-ml { top: 50%; left: 18%; transform: translateY(-50%); }
+.dot-c  { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.dot-mr { top: 50%; right: 18%; transform: translateY(-50%); }
+.dot-bl { bottom: 18%; left: 18%; }
+.dot-br { bottom: 18%; right: 18%; }
+
+/* Llama image silhouette */
+.llama-img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
