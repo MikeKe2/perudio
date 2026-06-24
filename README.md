@@ -98,8 +98,8 @@ The Android environment can be compiled directly via the Gradle wrapper command:
 # 1. Setup SDK environments
 export ANDROID_HOME=/path/to/android-sdk
 
-# 2. Configure full JDK path (Required compilation toolchain, e.g. OpenJDK 25 JDK)
-export JAVA_HOME=/usr/lib/jvm/java-25-openjdk-amd64
+# 2. Configure JDK 21 path (Gradle 8.14.3 requires Java 17-24; JDK 25 causes Groovy compilation errors)
+export JAVA_HOME=/home/alessio/jdk21
 
 # 3. Compile Android packages
 cd android
@@ -108,7 +108,7 @@ cd android
 ./gradlew assembleDebug
 # Resulting file: android/app/build/outputs/apk/debug/app-debug.apk
 
-# To compile an unsigned release APK (ready for signing and distribution):
+# To compile a signed release APK (configured to use debug key for easy local testing):
 ./gradlew assembleRelease
-# Resulting file: android/app/build/outputs/apk/release/app-release-unsigned.apk
+# Resulting file: android/app/build/outputs/apk/release/app-release.apk
 ```
