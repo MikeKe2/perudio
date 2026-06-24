@@ -194,16 +194,16 @@
 
 /* Shake roll animation */
 .dice-card.shaking {
-  animation: shake 0.4s infinite linear;
+  animation: shake 0.8s infinite linear;
 }
 
 .dice-card.shaking:nth-child(2n) {
-  animation-duration: 0.35s;
+  animation-duration: 0.7s;
   animation-delay: 0.05s;
 }
 
 .dice-card.shaking:nth-child(3n) {
-  animation-duration: 0.45s;
+  animation-duration: 0.9s;
   animation-delay: 0.1s;
 }
 

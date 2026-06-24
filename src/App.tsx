@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { App as CapApp } from '@capacitor/app';
 import llamaImg from './assets/llama.png';
 import shakeMp3 from './assets/shake.mp3';
@@ -11,6 +11,14 @@ function App() {
   const [isRolled, setIsRolled] = useState<boolean>(false);
   const [isRolling, setIsRolling] = useState<boolean>(false);
   const [rollingValues, setRollingValues] = useState<number[]>([1, 1, 1, 1, 1]);
+
+  const rollAudio = useRef<HTMLAudioElement | null>(null);
+
+  // Preload shake audio
+  useEffect(() => {
+    rollAudio.current = new Audio(shakeMp3);
+    rollAudio.current.load();
+  }, []);
 
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>(
     window.innerWidth > window.innerHeight ? 'landscape' : 'portrait'
@@ -83,11 +91,13 @@ function App() {
 
     setIsRolling(true);
     
-    // Play shake audio
-    const audio = new Audio(shakeMp3);
-    audio.play().catch((e) => console.log("Audio play failed:", e));
+    // Play preloaded shake audio instantly
+    if (rollAudio.current) {
+      rollAudio.current.currentTime = 0;
+      rollAudio.current.play().catch((e) => console.log("Audio play failed:", e));
+    }
 
-    // Fast cycling interval
+    // Cycle through random faces (keeps same face for 160ms - double the previous 80ms)
     const intervalId = setInterval(() => {
       setRollingValues(() => {
         const next = [];
@@ -96,7 +106,7 @@ function App() {
         }
         return next;
       });
-    }, 80);
+    }, 160);
 
     // Land after 1000ms
     setTimeout(() => {
